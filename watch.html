@@ -1,20 +1,180 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090a0f">
-<title>Watch — CINEVA</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="watch.css">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script defer src="watch.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#090817">
+    <meta name="description" content="Watch movies and series on HAWKMOVIES. Your World. Your Cinema.">
+
+    <title>Watch Now | HAWKMOVIES</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="watch.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
-<body class="watch-body">
-<header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">C</span><span>CINEVA<span class="brand-dot">.</span></span></a><a class="back-link" href="index.html">← Back to browse</a></header>
-<main class="watch-main">
-  <div class="player-shell" id="playerShell">
-    <div class="player-placeholder" id="playerPlaceholder"><div class="play-symbol">▶</div><p>YOUR SCREENING STARTS HERE</p><span>Choose a title from the CINEVA library</span></div>
-    <video id="videoPlayer" controls playsinline controlsList="nodownload" hidden></video>
-    <div class="player-message" id="playerMessage" hidden></div>
-  </div>
-  <section class="watch-details"><div><span class="kicker" id="watchKicker">NOW PLAYING ON CINEVA</span><h1 id="watchTitle">Select a title</h1><div class="watch-meta" id="watchMeta"></div><p id="watchDescription">Choose a movie or series from the home page to begin watching.</p></div><button class="btn btn-glass" id="shareBtn">↗ Share title</button></section>
-  <section class="watch-notice"><strong>Streaming note</strong><span>Playback is available for videos you own or are licensed to distribute. Some browsers may block autoplay; press play to start.</span></section>
-</main>
-<footer class="footer"><div class="footer-bottom"><span>© <span id="yearNow"></span> CINEVA</span><a href="index.html">Browse more stories →</a></div></footer>
-</body></html>
+
+<body class="watch-page">
+
+    <!-- NAVIGATION -->
+    <header class="site-header">
+        <div class="header-inner">
+
+            <a href="index.html" class="brand">
+                <span class="brand-mark">H</span>
+                <span class="brand-name">HAWK<span>MOVIES</span></span>
+            </a>
+
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="index.html#movies">Movies</a>
+                <a href="index.html#series">Series</a>
+                <a href="index.html#genres">Genres</a>
+            </nav>
+
+            <a href="index.html" class="back-home">
+                ← Back Home
+            </a>
+
+        </div>
+    </header>
+
+
+    <!-- WATCH CONTENT -->
+    <main class="watch-container">
+
+        <div class="watch-breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <span id="watchBreadcrumbTitle">Now Watching</span>
+        </div>
+
+
+        <!-- VIDEO PLAYER -->
+        <section class="video-section">
+
+            <div class="video-player" id="videoPlayer">
+
+                <div class="player-placeholder" id="playerPlaceholder">
+
+                    <div class="player-logo">H</div>
+
+                    <h2>HAWKMOVIES</h2>
+
+                    <p>Your World. Your Cinema.</p>
+
+                    <span id="playerMessage">
+                        Preparing your movie...
+                    </span>
+
+                </div>
+
+                <video
+                    id="movieVideo"
+                    controls
+                    playsinline
+                    preload="metadata"
+                    poster=""
+                    style="display: none;"
+                >
+                    Your browser does not support HTML5 video.
+                </video>
+
+            </div>
+
+        </section>
+
+
+        <!-- MOVIE INFORMATION -->
+        <section class="watch-information">
+
+            <div class="watch-main-info">
+
+                <div class="watch-label" id="watchType">
+                    HAWKMOVIES ORIGINAL
+                </div>
+
+                <h1 id="watchTitle">Loading Movie...</h1>
+
+                <div class="watch-meta" id="watchMeta">
+                    <span>Loading information...</span>
+                </div>
+
+                <p class="watch-description" id="watchDescription">
+                    Please wait while we load the movie information.
+                </p>
+
+                <div class="watch-actions">
+
+                    <button id="restartButton" class="watch-action-btn">
+                        ↻ Restart
+                    </button>
+
+                    <button id="copyLinkButton" class="watch-action-btn">
+                        ⧉ Copy Link
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MORE LIKE THIS -->
+        <section class="recommended-section">
+
+            <div class="section-heading">
+                <div>
+                    <span class="section-eyebrow">KEEP WATCHING</span>
+                    <h2>You May Also Like</h2>
+                </div>
+
+                <a href="index.html#movies">Explore More →</a>
+            </div>
+
+            <div class="movie-row" id="recommendedMovies">
+
+                <p class="loading-message">
+                    Loading recommendations...
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+
+        <div class="footer-brand">
+            <span class="brand-mark">H</span>
+            <strong>HAWKMOVIES</strong>
+        </div>
+
+        <p>YOUR WORLD. YOUR CINEMA.</p>
+
+        <p class="copyright">
+            © <span id="yearNow"></span> HAWKMOVIES. All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- NOTIFICATION -->
+    <div class="toast" id="toast"></div>
+
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="watch.js"></script>
+
+</body>
+</html>
