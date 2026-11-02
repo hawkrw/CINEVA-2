@@ -1,1 +1,583 @@
-.watch-body{min-height:100vh}.back-link{margin-left:auto;color:#c8c5c4;font-size:12px}.watch-main{max-width:1160px;margin:38px auto;padding:0 24px}.player-shell{width:100%;aspect-ratio:16/9;max-height:680px;background:#030407;border:1px solid #2a2d38;border-radius:12px;overflow:hidden;display:grid;place-items:center;position:relative}.player-shell video{width:100%;height:100%;background:#000}.player-placeholder{text-align:center;color:#8f9099}.play-symbol{margin:auto auto 14px;width:64px;height:64px;display:grid;place-items:center;border-radius:50%;background:var(--gold);color:#14110a;font-size:23px;padding-left:4px}.player-placeholder p{font:800 27px var(--display);letter-spacing:2px;color:#eee}.player-placeholder span{font-size:11px}.player-message{padding:30px;text-align:center;color:#ddd}.watch-details{display:flex;justify-content:space-between;align-items:start;gap:30px;padding:28px 2px}.watch-details h1{font:800 48px/.95 var(--display);margin:9px 0}.watch-details p{max-width:760px;color:#aaa8ad;font-size:13px;line-height:1.7}.watch-meta{display:flex;gap:8px}.watch-meta span{border:1px solid #30333e;border-radius:20px;padding:5px 9px;font-size:10px;color:#c7c4c4}.watch-notice{display:flex;gap:15px;padding:16px;border:1px solid #282c36;background:#11131b;border-radius:8px;color:#999;font-size:11px;line-height:1.6}.watch-notice strong{color:var(--gold);white-space:nowrap}@media(max-width:650px){.watch-main{margin:20px auto;padding:0 12px}.watch-details{flex-direction:column}.watch-details h1{font-size:39px}.watch-notice{flex-direction:column;gap:4px}.player-shell{border-radius:7px}}
+
+/* =========================================================
+   HAWKMOVIES — WATCH PAGE STYLES
+   Theme: Midnight Purple + Electric Violet + Neon Cyan
+========================================================= */
+
+:root {
+    --midnight: #090817;
+    --deep-violet: #17132B;
+    --electric-violet: #8B5CF6;
+    --neon-cyan: #22D3EE;
+    --soft-white: #F5F3FF;
+    --muted: #A6A1BC;
+    --border: rgba(255, 255, 255, 0.09);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body.watch-page {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--midnight);
+    color: var(--soft-white);
+    font-family: 'Inter', sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* HEADER */
+
+.watch-page .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    background: rgba(9, 8, 23, 0.94);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
+}
+
+.watch-page .header-inner {
+    max-width: 1400px;
+    min-height: 76px;
+    margin: auto;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.watch-page .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.watch-page .brand-mark {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(
+        135deg,
+        var(--electric-violet),
+        var(--neon-cyan)
+    );
+    color: white;
+    border-radius: 11px;
+    font-size: 23px;
+    font-weight: 900;
+}
+
+.watch-page .brand-name {
+    font-size: 19px;
+}
+
+.watch-page .brand-name span {
+    color: var(--neon-cyan);
+}
+
+.watch-page .main-nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.watch-page .main-nav a {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.watch-page .main-nav a:hover {
+    color: var(--neon-cyan);
+}
+
+.back-home {
+    padding: 11px 17px;
+    background: var(--deep-violet);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    font-size: 12px;
+    font-weight: 700;
+    transition: 0.25s ease;
+}
+
+.back-home:hover {
+    background: var(--electric-violet);
+    border-color: var(--electric-violet);
+}
+
+/* MAIN CONTAINER */
+
+.watch-container {
+    width: 90%;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 25px 0 75px;
+}
+
+/* BREADCRUMB */
+
+.watch-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.watch-breadcrumb a {
+    color: var(--neon-cyan);
+}
+
+.watch-breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+/* VIDEO PLAYER */
+
+.video-section {
+    width: 100%;
+}
+
+.video-player {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #000;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 17px;
+    box-shadow: 0 20px 65px rgba(0, 0, 0, 0.4);
+}
+
+.video-player video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #000;
+}
+
+.player-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(139, 92, 246, 0.2),
+            transparent 55%
+        ),
+        #090817;
+}
+
+.player-logo {
+    width: 75px;
+    height: 75px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 15px;
+    background: linear-gradient(
+        135deg,
+        var(--electric-violet),
+        var(--neon-cyan)
+    );
+    border-radius: 20px;
+    font-size: 45px;
+    font-weight: 900;
+    box-shadow: 0 0 35px rgba(139, 92, 246, 0.35);
+}
+
+.player-placeholder h2 {
+    margin: 0;
+    font-size: clamp(20px, 4vw, 30px);
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.player-placeholder p {
+    margin: 8px 0 20px;
+    color: var(--neon-cyan);
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.player-placeholder span {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* MOVIE INFORMATION */
+
+.watch-information {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 32px 0 40px;
+    border-bottom: 1px solid var(--border);
+}
+
+.watch-label {
+    display: inline-block;
+    margin-bottom: 13px;
+    color: var(--neon-cyan);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.watch-main-info h1 {
+    margin: 0;
+    font-size: clamp(26px, 5vw, 42px);
+    line-height: 1.15;
+    font-weight: 900;
+    letter-spacing: -1.5px;
+}
+
+.watch-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 17px 0;
+}
+
+.watch-meta span {
+    padding: 7px 11px;
+    background: var(--deep-violet);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.watch-description {
+    max-width: 800px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* ACTION BUTTONS */
+
+.watch-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.watch-action-btn {
+    padding: 12px 19px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--deep-violet);
+    color: var(--soft-white);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.watch-action-btn:hover {
+    border-color: var(--electric-violet);
+    background: var(--electric-violet);
+    transform: translateY(-2px);
+}
+
+/* RECOMMENDATIONS */
+
+.recommended-section {
+    padding-top: 40px;
+}
+
+.watch-page .section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 22px;
+}
+
+.section-eyebrow {
+    color: var(--neon-cyan);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.watch-page .section-heading h2 {
+    margin: 7px 0 0;
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.watch-page .section-heading > a {
+    color: var(--neon-cyan);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.watch-page .movie-row {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 17px;
+}
+
+/* Compatibility with movie cards generated by script.js */
+
+.watch-page .poster-card {
+    min-width: 0;
+    overflow: hidden;
+    background: var(--deep-violet);
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    cursor: pointer;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.watch-page .poster-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--electric-violet);
+}
+
+.watch-page .poster-image {
+    position: relative;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+}
+
+.watch-page .poster-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.watch-page .age-tag {
+    position: absolute;
+    top: 9px;
+    left: 9px;
+    padding: 5px 7px;
+    background: rgba(9, 8, 23, 0.85);
+    border-radius: 5px;
+    color: white;
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.watch-page .card-play {
+    position: absolute;
+    inset: 0;
+    width: 43px;
+    height: 43px;
+    margin: auto;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: 50%;
+    background: var(--electric-violet);
+    color: white;
+    font-size: 15px;
+    opacity: 0;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.watch-page .poster-card:hover .card-play {
+    opacity: 1;
+}
+
+.watch-page .poster-info {
+    padding: 12px;
+}
+
+.watch-page .poster-info h3 {
+    margin: 0;
+    overflow: hidden;
+    font-size: 12px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.watch-page .poster-sub {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 9px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.watch-page .poster-date {
+    display: block;
+    margin-top: 8px;
+    color: var(--neon-cyan);
+    font-size: 10px;
+}
+
+/* LOADING AND EMPTY STATES */
+
+.loading-message,
+.empty-message {
+    padding: 25px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* FOOTER */
+
+.watch-page .site-footer {
+    padding: 35px 5%;
+    background: #070614;
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.watch-page .site-footer > p {
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.watch-page .site-footer .copyright {
+    margin-top: 20px;
+    font-size: 10px;
+    letter-spacing: 0;
+}
+
+/* TOAST */
+
+.watch-page .toast {
+    position: fixed;
+    left: 50%;
+    bottom: 25px;
+    z-index: 999;
+    max-width: 90%;
+    padding: 13px 20px;
+    background: var(--electric-violet);
+    color: white;
+    border-radius: 9px;
+    font-size: 12px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 15px);
+    transition: 0.25s ease;
+}
+
+.watch-page .toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+
+    .watch-page .movie-row {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .watch-page .main-nav {
+        gap: 16px;
+    }
+
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+    .watch-page .header-inner {
+        min-height: 65px;
+        padding: 0 4%;
+    }
+
+    .watch-page .brand-name {
+        font-size: 15px;
+    }
+
+    .watch-page .brand-mark {
+        width: 32px;
+        height: 32px;
+        font-size: 19px;
+    }
+
+    .watch-page .main-nav {
+        display: none;
+    }
+
+    .back-home {
+        padding: 9px 11px;
+        font-size: 10px;
+    }
+
+    .watch-container {
+        width: 92%;
+        padding-top: 18px;
+    }
+
+    .video-player {
+        border-radius: 10px;
+    }
+
+    .watch-information {
+        padding: 25px 0;
+    }
+
+    .watch-description {
+        font-size: 12px;
+    }
+
+    .watch-page .movie-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .watch-page .section-heading h2 {
+        font-size: 19px;
+    }
+
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+
+}
