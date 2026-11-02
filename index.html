@@ -1,107 +1,227 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#090a0f">
-  <title>CINEVA — Stories worth staying up for</title>
-  <meta name="description" content="Discover movies and series on CINEVA.">
+  <meta name="theme-color" content="#090817">
+
+  <title>HAWKMOVIES — Your World. Your Cinema.</title>
+
+ <meta name="description"
+content="Watch the latest movies and series on HAWKMOVIES. Your world. Your cinema.">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css">
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script defer src="app.js"></script>
 </head>
+
 <body>
-  <header class="topbar">
-    <a class="brand" href="index.html" aria-label="CINEVA home"><span class="brand-mark">C</span><span>CINEVA<span class="brand-dot">.</span></span></a>
-    <button class="mobile-menu" id="mobileMenu" aria-label="Open navigation">☰</button>
-    <nav class="main-nav" id="mainNav">
-      <a class="active" href="#home">Home</a>
-      <a href="#latest">Latest</a>
-      <a href="#categories">Categories</a>
-      <a href="#series">Series</a>
-      <a href="#movies">Movies</a>
-    </nav>
-    <div class="top-actions">
-      <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search titles, genres..." autocomplete="off"></label>
-      <button class="account-btn" id="accountBtn">Sign in <span>↗</span></button>
+
+<header class="topbar">
+  <a class="brand" href="index.html">
+    <span class="brand-mark">C</span>
+    <span>CINEVA<span class="brand-dot">.</span></span>
+  </a>
+
+  <button class="mobile-menu" id="mobileMenu">☰</button>
+
+  <nav class="main-nav" id="mainNav">
+    <a class="active" href="#home">Home</a>
+    <a href="#latest">Latest</a>
+    <a href="#categories">Categories</a>
+    <a href="#series">Series</a>
+    <a href="#movies">Movies</a>
+  </nav>
+
+  <div class="top-actions">
+    <label class="search-box">
+      <span>⌕</span>
+      <input id="searchInput" type="search"
+        placeholder="Search titles, genres...">
+    </label>
+
+    <button class="account-btn" id="accountBtn">
+      Sign in ↗
+    </button>
+  </div>
+</header>
+
+<main id="home">
+
+  <section class="hero" id="hero">
+    <div class="hero-shade"></div>
+
+    <div class="hero-content">
+      <div class="eyebrow">
+        <span class="live-dot"></span>
+        THE CINEVA PREMIERE
+      </div>
+
+      <h1 id="heroTitle">
+        YOUR NEXT<br>
+        <em>FAVOURITE</em><br>
+        STORY.
+      </h1>
+
+      <p id="heroDescription">
+        Discover unforgettable stories,
+        bold characters and worlds worth
+        getting lost in.
+      </p>
+
+      <div class="hero-meta" id="heroMeta">
+        <span>FEATURED</span>
+        <span>HD</span>
+        <span>ALL STORIES</span>
+      </div>
+
+      <div class="hero-buttons">
+        <a class="btn btn-violet" id="heroWatch"
+          href="watch.html">▶ Watch now</a>
+
+        <button class="btn btn-glass" id="heroInfo">
+          ⓘ More details
+        </button>
+      </div>
     </div>
-  </header>
 
-  <main id="home">
-    <section class="hero" id="hero">
-      <div class="hero-shade"></div>
-      <div class="hero-content">
-        <div class="eyebrow"><span class="live-dot"></span> THE CINEVA PREMIERE</div>
-        <h1 id="heroTitle">YOUR NEXT<br><em>FAVOURITE</em><br>STORY.</h1>
-        <p id="heroDescription">Discover unforgettable stories, bold characters and worlds worth getting lost in.</p>
-        <div class="hero-meta" id="heroMeta"><span>FEATURED</span><span>HD</span><span>ALL STORIES</span></div>
-        <div class="hero-buttons">
-          <a class="btn btn-gold" id="heroWatch" href="watch.html"><span>▶</span> Watch now</a>
-          <button class="btn btn-glass" id="heroInfo">ⓘ More details</button>
-        </div>
+    <div class="hero-counter">
+      <span class="counter-line"></span>
+      <span id="heroCounter">01 / 01</span>
+    </div>
+
+    <button class="hero-arrow prev" id="heroPrev">‹</button>
+    <button class="hero-arrow next" id="heroNext">›</button>
+  </section>
+
+  <section class="category-strip" id="categories">
+    <div class="section-heading compact">
+      <div>
+        <span class="kicker">FIND YOUR MOOD</span>
+        <h2>EXPLORE CATEGORIES</h2>
       </div>
-      <div class="hero-counter"><span class="counter-line"></span><span id="heroCounter">01 / 01</span></div>
-      <button class="hero-arrow prev" id="heroPrev" aria-label="Previous feature">‹</button>
-      <button class="hero-arrow next" id="heroNext" aria-label="Next feature">›</button>
-    </section>
+    </div>
 
-    <section class="category-strip" id="categories">
-      <div class="section-heading compact"><div><span class="kicker">FIND YOUR MOOD</span><h2>EXPLORE CATEGORIES</h2></div></div>
-      <div class="genre-pills" id="genrePills">
-        <button class="genre-pill selected" data-genre="All">✦ All titles</button>
-        <button class="genre-pill" data-genre="Action">Action</button>
-        <button class="genre-pill" data-genre="Horror">Horror</button>
-        <button class="genre-pill" data-genre="Erotic">Erotic · 18+</button>
-        <button class="genre-pill" data-genre="Drama">Drama</button>
-        <button class="genre-pill" data-genre="High School">High school</button>
-        <button class="genre-pill" data-genre="Animation">Animation</button>
-        <button class="genre-pill" data-genre="Comedy">Comedy</button>
+    <div class="genre-pills" id="genrePills">
+      <button class="genre-pill selected" data-genre="All">✦ All titles</button>
+      <button class="genre-pill" data-genre="Action">Action</button>
+      <button class="genre-pill" data-genre="Horror">Horror</button>
+      <button class="genre-pill" data-genre="Erotic">Erotic · 18+</button>
+      <button class="genre-pill" data-genre="Drama">Drama</button>
+      <button class="genre-pill" data-genre="High School">High School</button>
+      <button class="genre-pill" data-genre="Animation">Animation</button>
+      <button class="genre-pill" data-genre="Comedy">Comedy</button>
+    </div>
+  </section>
+
+  <section class="content-section" id="latest">
+    <div class="section-heading">
+      <div>
+        <span class="kicker">FRESH FROM THE SCREEN</span>
+        <h2>LATEST ADDED</h2>
+        <p>New arrivals, recently added to the CINEVA collection.</p>
       </div>
-    </section>
+      <a href="#allContent" class="see-all">Explore all →</a>
+    </div>
+    <div class="poster-row" id="latestRow">
+      <div class="loading-state">Loading the latest stories...</div>
+    </div>
+  </section>
 
-    <section class="content-section" id="latest">
-      <div class="section-heading"><div><span class="kicker">FRESH FROM THE SCREEN</span><h2>LATEST ADDED</h2><p>New arrivals, recently added to the CINEVA collection.</p></div><a href="#allContent" class="see-all">Explore all <span>→</span></a></div>
-      <div class="poster-row" id="latestRow"><div class="loading-state">Loading the latest stories<span class="loading-dots">•••</span></div></div>
-    </section>
+  <section class="content-section" id="movies">
+    <div class="section-heading">
+      <div>
+        <span class="kicker">BIG SCREEN ENERGY</span>
+        <h2>MOVIES</h2>
+        <p>Feature films selected for your next movie night.</p>
+      </div>
+      <a href="#allContent" class="see-all">See all →</a>
+    </div>
+    <div class="poster-row" id="moviesRow"></div>
+  </section>
 
-    <section class="content-section" id="movies">
-      <div class="section-heading"><div><span class="kicker">BIG SCREEN ENERGY</span><h2>MOVIES</h2><p>Feature films selected for your next movie night.</p></div><a href="#allContent" class="see-all">See all <span>→</span></a></div>
-      <div class="poster-row" id="moviesRow"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div>
-    </section>
+  <section class="content-section" id="series">
+    <div class="section-heading">
+      <div>
+        <span class="kicker">ONE MORE EPISODE?</span>
+        <h2>SEASON & SERIES</h2>
+        <p>Stories that keep unfolding.</p>
+      </div>
+      <a href="#allContent" class="see-all">See all →</a>
+    </div>
+    <div class="poster-row" id="seriesRow"></div>
+  </section>
 
-    <section class="content-section" id="series">
-      <div class="section-heading"><div><span class="kicker">ONE MORE EPISODE?</span><h2>SEASON & SERIES</h2><p>Stories that keep unfolding.</p></div><a href="#allContent" class="see-all">See all <span>→</span></a></div>
-      <div class="poster-row" id="seriesRow"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div>
-    </section>
+  <section class="content-section genre-section" id="genreRows">
+    <div class="section-heading">
+      <div>
+        <span class="kicker">PICK YOUR NEXT OBSESSION</span>
+        <h2>MADE FOR YOUR MOOD</h2>
+        <p>Browse by genre and discover something new.</p>
+      </div>
+    </div>
+    <div id="genreCollections"></div>
+  </section>
 
-    <section class="content-section genre-section" id="genreRows">
-      <div class="section-heading"><div><span class="kicker">PICK YOUR NEXT OBSESSION</span><h2>MADE FOR YOUR MOOD</h2><p>Browse by genre and discover something new.</p></div></div>
-      <div id="genreCollections"></div>
-    </section>
+  <section class="content-section all-content" id="allContent">
+    <div class="section-heading">
+      <div>
+        <span class="kicker">THE FULL COLLECTION</span>
+        <h2>ALL TITLES</h2>
+        <p id="allCount">Explore the CINEVA library.</p>
+      </div>
+    </div>
+    <div class="poster-grid" id="allGrid"></div>
+    <button class="load-more" id="loadMore">Load more titles</button>
+  </section>
 
-    <section class="content-section all-content" id="allContent">
-      <div class="section-heading"><div><span class="kicker">THE FULL COLLECTION</span><h2>ALL TITLES</h2><p id="allCount">Explore the CINEVA library.</p></div></div>
-      <div class="poster-grid" id="allGrid"></div>
-      <button class="load-more" id="loadMore">Load more titles</button>
-    </section>
-  </main>
+</main>
 
-  <footer class="footer">
-    <div class="footer-top"><a class="brand" href="#home"><span class="brand-mark">C</span><span>CINEVA<span class="brand-dot">.</span></span></a><p>Stories worth staying up for.</p></div>
-    <div class="footer-links"><a href="#home">Home</a><a href="#latest">Latest</a><a href="#categories">Categories</a><a href="mailto:support@cineva.example">Contact</a><a href="#legal">Terms & Privacy</a></div>
-    <div class="footer-bottom"><span>© <span id="yearNow"></span> CINEVA. All rights reserved.</span><span>Only stream content you own or are licensed to distribute.</span></div>
-  </footer>
+<footer class="footer">
+  <div class="footer-top">
+    <a class="brand" href="#home">
+      <span class="brand-mark">C</span>
+      <span>CINEVA<span class="brand-dot">.</span></span>
+    </a>
+    <p>Stories beyond imagination.</p>
+  </div>
 
-  <div class="modal-backdrop" id="detailModal" aria-hidden="true">
-    <div class="detail-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button class="modal-close" id="modalClose" aria-label="Close">×</button>
-      <div class="modal-backdrop-image" id="modalBackdrop"></div>
-      <div class="modal-copy"><span class="kicker" id="modalKicker">CINEVA ORIGINALS</span><h2 id="modalTitle"></h2><p id="modalDescription"></p><div class="hero-meta" id="modalMeta"></div><a class="btn btn-gold" id="modalWatch" href="watch.html">▶ Watch now</a></div>
+  <div class="footer-links">
+    <a href="#home">Home</a>
+    <a href="#latest">Latest</a>
+    <a href="#categories">Categories</a>
+    <a href="mailto:support@cineva.example">Contact</a>
+    <a href="#legal">Terms & Privacy</a>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© <span id="yearNow"></span> HAWK. All rights reserved.</span>
+    <span>Stream content you own or are licensed to distribute.</span>
+  </div>
+</footer>
+
+<div class="modal-backdrop" id="detailModal" aria-hidden="true">
+  <div class="detail-modal" role="dialog" aria-modal="true">
+    <button class="modal-close" id="modalClose">×</button>
+    <div class="modal-backdrop-image" id="modalBackdrop"></div>
+    <div class="modal-copy">
+      <span class="kicker" id="modalKicker">HAWK ORIGINALS</span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDescription"></p>
+      <div class="hero-meta" id="modalMeta"></div>
+      <a class="btn btn-violet" id="modalWatch" href="watch.html">▶ Watch now</a>
     </div>
   </div>
-  <div class="toast" id="toast"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
 </body>
 </html>
