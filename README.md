@@ -1,55 +1,196 @@
-# CINEVA — streaming website starter
 
-A responsive, dark cinema-style movie/series catalogue inspired by your screenshots. It includes:
-- Home page with featured hero, Latest Added, Movies, Series, genre collections and searchable All Titles grid.
-- Watch page that loads a title by URL slug and plays its `video_url`.
-- Supabase database integration using the browser Supabase JS client.
-- Demo mode with sample cards until you configure Supabase.
-- Mobile navigation, detail modal, genre filters and load-more behaviour.
+# HAWKMOVIES
+### YOUR WORLD. YOUR CINEMA.
 
-## 1. Configure Supabase
-1. Create a project at https://supabase.com.
-2. Open **SQL Editor**, paste `supabase-schema.sql`, and run it.
-3. In **Project Settings → API**, copy the Project URL and anon/public key.
-4. In `app.js` and `watch.js`, replace:
-   - `YOUR_SUPABASE_PROJECT_URL`
-   - `YOUR_SUPABASE_ANON_KEY`
-5. Keep the anon key in the browser only with Row Level Security enabled. Never put your `service_role` key in frontend code.
+HAWKMOVIES is a modern movie and series streaming website built with HTML, CSS, JavaScript, and Supabase.
 
-## 2. Add movie or series content
-Insert rows into `public.movies` through Supabase Table Editor. Suggested fields:
-- `title`: display title
-- `slug`: unique URL-friendly title, e.g. `my-first-film`
-- `description`
-- `poster_url`: publicly accessible poster image URL
-- `backdrop_url`: wide hero image URL
-- `video_url`: direct playable MP4/HLS URL for content you own or are licensed to stream
-- `year`, `genre`, `rating`, `age_rating`
-- `content_type`: `Movie` or `Series`
-- `is_featured`: turn on to include it in the home hero
+---
 
-New records automatically appear in Latest Added because the page sorts by `created_at` descending. Use a unique slug for every title.
+## 1. PROJECT STRUCTURE
 
-## 3. Run locally
-Because the project uses browser JavaScript modules/CDN assets and Supabase requests, serve it from a local web server rather than opening the HTML file directly.
+Your project folder should look like this:
 
-Examples:
-- VS Code: install **Live Server**, right-click `index.html` → Open with Live Server.
-- Python: from this folder run `python -m http.server 5500`, then visit `http://localhost:5500`.
+```text
+HAWKMOVIES/
+│
+├── index.html
+├── styles.css
+├── script.js
+│
+├── watch.html
+├── watch.css
+├── watch.js
+│
+└── supabase-schema.sql
+```
 
-## 4. Publish
-Upload the files to Netlify, Vercel static hosting, GitHub Pages, or your preferred static host. Add your production domain to Supabase Authentication URL settings if you later enable sign-in.
+---
 
-## 5. Important production upgrades
-This is a polished front-end starter, not a complete paid streaming backend. Before accepting payments or distributing premium media:
-- Add Supabase Auth and user profiles.
-- Create subscription/payment verification on a trusted backend or Supabase Edge Function.
-- Keep premium videos in a **private** Storage bucket; issue short-lived signed URLs only after checking entitlements.
-- Do not expose the Supabase service-role key in HTML/JS.
-- Add server-side admin-only upload/edit policies.
-- Add episode tables and a season/episode selector if you want multi-episode series.
-- Add real age-verification and moderation/legal compliance before enabling 18+ content. A simple front-end label is not age verification.
-- Only upload and stream films/series for which you hold distribution rights. Respect copyright and local law.
+## 2. TECHNOLOGIES
 
-## 6. Current limitations
-The Sign in button is a placeholder. The series section currently lists rows with `content_type = 'Series'`; episodes/seasons and payment/subscription workflows need backend implementation. The demo artwork uses remote Unsplash photos and is only illustrative.
+- HTML5
+- CSS3
+- JavaScript
+- Supabase Database
+- Supabase Storage
+- HTML5 Video Player
+
+---
+
+## 3. SUPABASE SETUP
+
+1. Visit https://supabase.com/
+2. Create an account.
+3. Create a new project.
+4. Open the SQL Editor.
+5. Paste the contents of `supabase-schema.sql`.
+6. Run the SQL script.
+
+---
+
+## 4. CONNECT YOUR WEBSITE
+
+Open both:
+
+- `script.js`
+- `watch.js`
+
+Find:
+
+```javascript
+const SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL";
+const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+```
+
+Replace the placeholders with your Supabase project URL and public anon/publishable key.
+
+You can find your project API settings in the Supabase dashboard.
+
+Never put your service-role or secret key in browser JavaScript.
+
+---
+
+## 5. ADDING MOVIES
+
+Open Supabase:
+
+1. Select Table Editor.
+2. Open the `movies` table.
+3. Add a new record.
+4. Enter the movie details.
+
+Example:
+
+| Field | Example |
+|---|---|
+| title | Shadow Mission |
+| slug | shadow-mission |
+| description | An action adventure |
+| poster_url | Your poster image URL |
+| backdrop_url | Your background image URL |
+| video_url | Your authorized video URL |
+| year | 2026 |
+| rating | 8.5 |
+| age_rating | 16+ |
+| genre | Action |
+| content_type | Movie |
+| is_featured | true |
+| is_published | true |
+
+Use a unique slug for every movie.
+
+---
+
+## 6. AVAILABLE GENRES
+
+- Action
+- Horror
+- Erotic (18+)
+- Drama
+- High School
+- Animation
+- Comedy
+
+Make sure the genre values match the names used by your website.
+
+---
+
+## 7. STORAGE
+
+Recommended Supabase Storage buckets:
+
+- `movie-posters`
+- `movie-videos`
+
+Posters can be public.
+
+Keep full-length videos private and use a trusted server-side process to create temporary signed playback URLs.
+
+Only upload content you own or are licensed to distribute.
+
+---
+
+## 8. RUNNING LOCALLY
+
+You can use:
+
+- Visual Studio Code
+- Live Server extension
+- A local development server
+
+Open the project folder in VS Code.
+
+Right-click `index.html` and choose:
+
+Open with Live Server.
+
+Avoid opening the files directly using `file://` when testing Supabase.
+
+---
+
+## 9. PUBLISHING ONLINE
+
+Possible hosting platforms:
+
+- https://pages.cloudflare.com/
+- https://vercel.com/
+- https://www.netlify.com/
+
+Upload your project folder or connect your GitHub repository.
+
+Configure your Supabase project and test the website after deployment.
+
+---
+
+## 10. IMPORTANT SECURITY
+
+- Never expose your Supabase service-role key.
+- Use Row Level Security.
+- Protect admin access.
+- Keep private video files in private storage.
+- Use signed URLs for private video playback.
+- Implement genuine age verification before allowing access to 18+ content.
+- Follow copyright and content-distribution laws.
+
+---
+
+## 11. BRAND IDENTITY
+
+Website: HAWKMOVIES
+
+Tagline: YOUR WORLD. YOUR CINEMA.
+
+Main background: #090817
+
+Deep violet: #17132B
+
+Electric violet: #8B5CF6
+
+Neon cyan: #22D3EE
+
+Soft white: #F5F3FF
+
+---
+
+HAWKMOVIES
+YOUR WORLD. YOUR CINEMA.
