@@ -41,7 +41,7 @@ html {
 body {
   background: var(--bg);
   color: var(--white);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'DM Sans',;
   overflow-x: hidden;
 }
 
