@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090a0f">
+<title>Watch — CINEVA</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="watch.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script defer src="watch.js"></script>
+</head>
+<body class="watch-body">
+<header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">C</span><span>CINEVA<span class="brand-dot">.</span></span></a><a class="back-link" href="index.html">← Back to browse</a></header>
+<main class="watch-main">
+  <div class="player-shell" id="playerShell">
+    <div class="player-placeholder" id="playerPlaceholder"><div class="play-symbol">▶</div><p>YOUR SCREENING STARTS HERE</p><span>Choose a title from the CINEVA library</span></div>
+    <video id="videoPlayer" controls playsinline controlsList="nodownload" hidden></video>
+    <div class="player-message" id="playerMessage" hidden></div>
+  </div>
+  <section class="watch-details"><div><span class="kicker" id="watchKicker">NOW PLAYING ON CINEVA</span><h1 id="watchTitle">Select a title</h1><div class="watch-meta" id="watchMeta"></div><p id="watchDescription">Choose a movie or series from the home page to begin watching.</p></div><button class="btn btn-glass" id="shareBtn">↗ Share title</button></section>
+  <section class="watch-notice"><strong>Streaming note</strong><span>Playback is available for videos you own or are licensed to distribute. Some browsers may block autoplay; press play to start.</span></section>
+</main>
+<footer class="footer"><div class="footer-bottom"><span>© <span id="yearNow"></span> CINEVA</span><a href="index.html">Browse more stories →</a></div></footer>
+</body></html>
